@@ -1,0 +1,58 @@
+version: '3.5'
+
+services:
+
+  nginx:
+    container_name: "nginx"
+    build: ./services/nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+    volumes:
+      - static_volume:/usr/share/nginx/html/static/media_files
+
+  web:
+    container_name: "web"
+    build: ./services/web
+
+    volumes:
+      - ./services/web/:/usr/src/app/
+      - static_volume:/usr/src/app/project/media/media_files
+      - ./services/web/project/media:/usr/src/app/project/media
+    ports:
+      - 1111:1111
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+
+
+  db:
+    container_name: "db"
+    image: postgres:13-alpine
+    volumes:
+      - ./db_dev/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=diplom_project
+    env_file:
+      - ./.env.dev.db
+    ports:
+      - '5432:5432'
+
+  db_test:
+    container_name: "db_test"
+    image: postgres:13-alpine
+    volumes:
+      - ./db_test/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=test
+    ports:
+      - '6000:5432'
+
+volumes:
+  static_volume:
