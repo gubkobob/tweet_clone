@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      postgres:
-        image: postgres:12
+      db_test:
+        image: postgres:13-alpine
         env:
           POSTGRES_USER: test
           POSTGRES_PASSWORD: test
