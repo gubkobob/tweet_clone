@@ -21,4 +21,4 @@ flake8:
 	flake8 services/web/tests
 
 create_db:
-	docker-compose start db_test
+	docker-compose run -rm db_test
