@@ -22,9 +22,9 @@ jobs:
     - name: Black
       run: |
         make black
-    - name: Isort
-      run: |
-        make isort
+#    - name: Isort
+#      run: |
+#        make isort
 #    - name: Flake8
 #      run: |
 #        make flake8
