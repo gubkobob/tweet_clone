@@ -19,3 +19,6 @@ isort:
 flake8:
 	flake8 services/web/project
 	flake8 services/web/tests
+
+create_db:
+	docker-compose up --build

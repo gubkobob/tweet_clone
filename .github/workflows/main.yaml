@@ -30,6 +30,7 @@ jobs:
 #        make flake8
     - name: Test
       run: |
+        make create_db
         make test
 #    - name: Mypy
 #      run: |
