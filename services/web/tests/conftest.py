@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker
 from ..project.database import Base, Tweet, User, get_session
 from ..project.main import app
 
-DATABASE_URL_TEST = "postgresql+asyncpg://admin:admin@db:5432/test"
+DATABASE_URL_TEST = "postgresql+asyncpg://admin:admin@localhost:5432/test"
 # DATABASE_URL_TEST = "postgresql+asyncpg://test:test@postgres:5432/test"
 
 engine_test = create_async_engine(DATABASE_URL_TEST, echo=True)
