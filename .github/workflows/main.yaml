@@ -10,20 +10,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-#    services:
-#      db_test:
-#        image: postgres:13-alpine
-#        env:
-#          POSTGRES_USER: test
-#          POSTGRES_PASSWORD: test
-#          POSTGRES_DB: test
-#        ports:
-#          - 5432:5432
-#        options: >-
-#          --health-cmd pg_isready
-#          --health-interval 10s
-#          --health-timeout 5s
-#          --health-retries 5
+    services:
+      db:
+        image: postgres:13-alpine
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -38,9 +38,9 @@ jobs:
     - name: Black
       run: |
         make black
-    - name: Create_db
-      run: |
-        make create_db
+#    - name: Create_db
+#      run: |
+#        make create_db
     - name: Test
       run: |
         make test
