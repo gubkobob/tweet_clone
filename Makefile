@@ -20,11 +20,5 @@ flake8:
 	flake8 services/web/project
 	flake8 services/web/tests
 
-create_db:
-	docker-compose build db
-	docker-compose start db
-	docker exec -it db bash
-	psql -U admin diplom_project
-	CREATE DATABASE test;
 
 
