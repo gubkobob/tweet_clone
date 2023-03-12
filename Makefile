@@ -4,10 +4,7 @@ install:
 
 test:
 	pytest services/web/tests
-
-mypy:
-	mypy --check-untyped-defs services/web/project
-#	mypy --check-untyped-defs tests/
+	pytest --cov services/web/tests
 
 black:
 	black --line-length 79 --check --diff services/web/project

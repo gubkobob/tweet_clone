@@ -1,3 +1,4 @@
+import os
 from typing import Any, Dict
 
 from sqlalchemy import (
@@ -11,13 +12,10 @@ from sqlalchemy import (
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 
-# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
-DATABASE_URL = "postgresql+asyncpg://admin:admin@db:5432/diplom_project"
-engine = create_async_engine(DATABASE_URL, echo=True)
 
-# engine = create_async_engine(os.getenv("DATABASE_URL"), echo=True)
+engine = create_async_engine(os.getenv("DATABASE_URL"), echo=True)
 
 async_session = sessionmaker(
     engine, expire_on_commit=False, class_=AsyncSession
@@ -48,7 +46,7 @@ followers = Table(
 
 
 class User(Base):
-    __tablename__ = "users"
+    __tablename__: str = "users"
 
     id = Column(Integer, primary_key=True, index=True, unique=True)
     name = Column(String, index=True)

@@ -103,5 +103,5 @@ async def post_user(session: AsyncSession, user) -> User:
     new_user = User(**user.dict())
     async with session.begin():
         session.add(new_user)
-        session.commit()
+        await session.commit()
     return new_user

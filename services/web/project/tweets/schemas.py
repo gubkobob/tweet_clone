@@ -31,7 +31,6 @@ class TweetIn(BaseModel):
 
     tweet_data: str
     tweet_media_ids: Optional[List[int]]
-    # attachments: Optional[List[str]]
 
     class Config:
         orm_mode = True

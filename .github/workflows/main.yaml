@@ -48,6 +48,3 @@ jobs:
       run: |
         make flake8
 
-#    - name: Mypy
-#      run: |
-#        make mypy
