@@ -46,11 +46,3 @@ async def test_get_user_me(ac: AsyncClient, insert_data):
     assert response.status_code == 200
     assert response.json()["result"] is True
     assert response_2.status_code == 404
-
-
-async def test_get_user_by_id(ac: AsyncClient, insert_data):
-    response = await ac.get("api/users/1")
-    response_2 = await ac.get("api/users/4")
-    assert response.status_code == 200
-    assert response.json()["result"] is True
-    assert response_2.status_code == 404

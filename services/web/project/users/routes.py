@@ -124,8 +124,7 @@ async def get_user_me_handler(
         Pydantic-схема для фронтенда с данными пользователя или ошибкой
     """
     try:
-        result = await get_user_me(session=session, api_key=api_key)
-        return result
+        return await get_user_me(session=session, api_key=api_key)
     except BackendExeption as e:
         response.status_code = 404
         return e
@@ -155,8 +154,7 @@ async def get_user_by_id_handler(
         Pydantic-схема для фронтенда с данными пользователя или ошибкой
     """
     try:
-        result = await get_user(session=session, user_id=id)
-        return result
+        return await get_user(session=session, user_id=id)
     except BackendExeption as e:
         response.status_code = 404
         return e
@@ -182,5 +180,5 @@ async def post_users_handler(
     :return: UserOut
         Обьект пользователя - pydantic-схема
     """
-    result = await post_user(session=session, user=user)
-    return result
+
+    return await post_user(session=session, user=user)

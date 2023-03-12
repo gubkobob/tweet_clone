@@ -79,8 +79,7 @@ async def get_user_me(session: AsyncSession, api_key: str):
 
     user = q.scalars().one_or_none()
 
-    result = {"result": True, "user": user}
-    return result
+    return {"result": True, "user": user}
 
 
 async def get_user(session: AsyncSession, user_id: int):
@@ -97,8 +96,7 @@ async def get_user(session: AsyncSession, user_id: int):
             error_type="NO USER", error_message="No user with such id"
         )
 
-    result = {"result": True, "user": user}
-    return result
+    return {"result": True, "user": user}
 
 
 async def post_user(session: AsyncSession, user) -> User:
