@@ -19,7 +19,7 @@ services:
     volumes:
       - ./services/web/:/usr/src/app/
       - static_volume:/usr/src/app/project/media/media_files
-      - ./services/web/project/media:/usr/src/app/project/media
+#      - /services/web/project/media/media_files:/usr/src/app/project/media/media_files
     ports:
       - 1111:1111
     env_file:
