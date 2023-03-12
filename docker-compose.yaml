@@ -19,7 +19,7 @@ services:
     volumes:
       - ./services/web/:/usr/src/app/
       - static_volume:/usr/src/app/project/media/media_files
-      - ./services/web/project/media:/usr/src/app/project/media
+#      - /services/web/project/media/media_files:/usr/src/app/project/media/media_files
     ports:
       - 1111:1111
     env_file:
@@ -42,17 +42,8 @@ services:
     ports:
       - '5432:5432'
 
-  db_test:
-    container_name: "db_test"
-    image: postgres:13-alpine
-    volumes:
-      - ./db_test/:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=test
-      - POSTGRES_PASSWORD=test
-      - POSTGRES_DB=test
-    ports:
-      - '6000:5432'
 
 volumes:
   static_volume:
+  db_dev:
+    name: db_dev
