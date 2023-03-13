@@ -11,6 +11,8 @@ services:
       - web
     volumes:
       - static_volume:/usr/share/nginx/html/static/media_files
+    networks:
+      - custom
 
   web:
     container_name: "web"
@@ -24,6 +26,8 @@ services:
       - 1111:1111
     env_file:
       - ./.env.dev
+    networks:
+      - custom
     depends_on:
       - db
 
@@ -41,9 +45,16 @@ services:
       - ./.env.dev.db
     ports:
       - '5432:5432'
+    networks:
+      - custom
 
 
 volumes:
   static_volume:
+    driver: local
   db_dev:
     name: db_dev
+
+networks:
+  custom:
+    driver: bridge
