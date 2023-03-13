@@ -17,4 +17,3 @@ def check_file(file):
         raise BackendExeption(
             error_type="BAD FILE", error_message="Bad file type"
         )
-
