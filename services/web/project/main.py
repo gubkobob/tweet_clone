@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 
-@app.get("/test")
+@app.get("/api/test")
 def test1():
     return {"id": 1, "name": "sasa"}
 

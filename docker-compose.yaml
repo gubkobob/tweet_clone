@@ -10,7 +10,9 @@ services:
     depends_on:
       - web
     volumes:
-      - static_volume:/usr/share/nginx/html/static/media_files
+      - ./media_files:/usr/share/nginx/html/static/media_files
+    networks:
+      - custom
 
   web:
     container_name: "web"
@@ -18,12 +20,13 @@ services:
 
     volumes:
       - ./services/web/:/usr/src/app/
-      - static_volume:/usr/src/app/project/media/media_files
-      - ./services/web/project/media:/usr/src/app/project/media
+      - ./media_files:/usr/src/app/project/media/media_files
     ports:
       - 1111:1111
     env_file:
       - ./.env.dev
+    networks:
+      - custom
     depends_on:
       - db
 
@@ -41,18 +44,16 @@ services:
       - ./.env.dev.db
     ports:
       - '5432:5432'
+    networks:
+      - custom
 
-  db_test:
-    container_name: "db_test"
-    image: postgres:13-alpine
-    volumes:
-      - ./db_test/:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=test
-      - POSTGRES_PASSWORD=test
-      - POSTGRES_DB=test
-    ports:
-      - '6000:5432'
 
 volumes:
-  static_volume:
+  media_files:
+    driver: local
+  db_dev:
+    name: db_dev
+
+networks:
+  custom:
+    driver: bridge

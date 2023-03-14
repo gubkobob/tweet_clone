@@ -39,7 +39,7 @@ async def post_follow_to_user_handler(
 ) -> Union[OnlyResult, ErrorSchema]:
     """
     Эндпоинт публикации отметки 'следит' за другим пользователем
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param id: int
@@ -75,7 +75,7 @@ async def delete_follow_to_user_handler(
 ) -> Union[OnlyResult, ErrorSchema]:
     """
     Эндпоинт удаления отметки 'следит' за другим пользователем
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param id: int
@@ -112,7 +112,7 @@ async def get_user_me_handler(
 ) -> Union[UserResultOutSchema, ErrorSchema]:
     """
     Эндпоинт получения информации о пльзователе по api-key
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param api_key: str
@@ -124,8 +124,7 @@ async def get_user_me_handler(
         Pydantic-схема для фронтенда с данными пользователя или ошибкой
     """
     try:
-        result = await get_user_me(session=session, api_key=api_key)
-        return result
+        return await get_user_me(session=session, api_key=api_key)
     except BackendExeption as e:
         response.status_code = 404
         return e
@@ -143,7 +142,7 @@ async def get_user_by_id_handler(
 ) -> Union[UserResultOutSchema, ErrorSchema]:
     """
     Эндпоинт получения информации о пльзователе по его id
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param id: int
@@ -155,8 +154,7 @@ async def get_user_by_id_handler(
         Pydantic-схема для фронтенда с данными пользователя или ошибкой
     """
     try:
-        result = await get_user(session=session, user_id=id)
-        return result
+        return await get_user(session=session, user_id=id)
     except BackendExeption as e:
         response.status_code = 404
         return e
@@ -173,7 +171,7 @@ async def post_users_handler(
 ) -> UserOut:
     """
     Эндпоинт регистрации нового пользователя
-
+    \f
     :param user: UserIn
          Данные о пользователе из pydantic-схемы
     :param session: Asyncsession
@@ -182,5 +180,5 @@ async def post_users_handler(
     :return: UserOut
         Обьект пользователя - pydantic-схема
     """
-    result = await post_user(session=session, user=user)
-    return result
+
+    return await post_user(session=session, user=user)

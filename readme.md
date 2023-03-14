@@ -9,8 +9,9 @@
 
         - alembic revision --message="Init migration" --autogenerate
         - alembic upgrade head
-    - здесь будет про тесты, линтеры и т д
+    - тестирование
+        - тестирование происходит автоматически при pull в ветку master и при push в ветки master, main
+     
 
-2. Коммерческое использование
-    -....
+
 
