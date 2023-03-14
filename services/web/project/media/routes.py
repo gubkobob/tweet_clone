@@ -20,7 +20,7 @@ from ..schemas_overal import ErrorSchema
 router = APIRouter(prefix="/medias", tags=["Medias"])
 
 OUT_PATH = Path(__file__).parent / "media_files"
-OUT_PATH.mkdir(exist_ok=True, parents=True)
+# OUT_PATH.mkdir(exist_ok=True, parents=True)
 OUT_PATH = OUT_PATH.absolute()
 
 PREFIX_NAME = "/static/media_files/"
@@ -41,7 +41,7 @@ async def post_image_handler(
 ) -> Union[MediaOutSchema, ErrorSchema]:
     """
     Эндпоинт загрузки изображений для твита
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param file: UploadFile

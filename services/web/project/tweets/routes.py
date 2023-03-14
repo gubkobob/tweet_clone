@@ -44,7 +44,7 @@ async def get_tweet_handler(
 ) -> Union[TweetSchema, ErrorSchema]:
     """
     Эндпоинт возвращает твит по идентификатору или сообщение об ошибке
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param id: int
@@ -79,7 +79,7 @@ async def get_tweets_handler(
 ) -> Union[TweetListOutSchema, ErrorSchema]:
     """
     Эндпоинт возвращает твиты пользователя по api-key или сообщение об ошибке
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param api_key: str
@@ -115,7 +115,7 @@ async def post_tweets_handler(
 ) -> Union[BaseAnsTweet, ErrorSchema]:
     """
     Эндпоинт публикации твита пользователя по его api-key
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param tweet: TweetIn
@@ -160,7 +160,7 @@ async def delete_tweets_handler(
 ) -> Union[OnlyResult, ErrorSchema]:
     """
     Эндпоинт удаления твита пользователя по его api-key и id твита
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param id: int
@@ -196,7 +196,7 @@ async def post_like_to_tweet_handler(
 ) -> Union[OnlyResult, ErrorSchema]:
     """
     Эндпоинт регистрации лайка к твиту по api-key и id твита
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param id: int
@@ -232,7 +232,7 @@ async def delete_like_to_tweet_handler(
 ) -> Union[OnlyResult, ErrorSchema]:
     """
     Эндпоинт удаления лайка к твиту по api-key и id твита
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param id: int
