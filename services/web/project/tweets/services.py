@@ -25,7 +25,7 @@ async def get_tweet(session: AsyncSession, tweet_id: int):
 
 
 async def get_tweets(session: AsyncSession, api_key: str):
-    user = await get_user_by_api_key(session=session, api_key=api_key)
+    await get_user_by_api_key(session=session, api_key=api_key)
 
     q = await session.execute(
         select(Tweet)
@@ -69,7 +69,7 @@ async def insert_media_to_tweet(
 
 async def delete_tweet(session: AsyncSession, api_key: str, tweet_id: int):
     user = await get_user_by_api_key(session=session, api_key=api_key)
-    tweet = await get_tweet(session=session, tweet_id=tweet_id)
+    await get_tweet(session=session, tweet_id=tweet_id)
 
     q1 = await session.execute(
         select(Tweet.user_id).where(Tweet.id == tweet_id)
@@ -91,12 +91,8 @@ async def post_like_to_tweet(
     session: AsyncSession, api_key: str, tweet_id: int
 ):
     user = await get_user_by_api_key(session=session, api_key=api_key)
-    tweet = await get_tweet(session=session, tweet_id=tweet_id)
+    await get_tweet(session=session, tweet_id=tweet_id)
 
-    # if tweet.user_id == user.id:
-    #     raise BackendExeption(
-    #         error_type="BAD LIKE", error_message="User can't like his tweet"
-    #     )
     try:
         insert_like_query = await session.execute(
             insert(Like).values(

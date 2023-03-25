@@ -20,12 +20,12 @@ from ..schemas_overal import ErrorSchema
 router = APIRouter(prefix="/medias", tags=["Medias"])
 
 OUT_PATH = Path(__file__).parent / "media_files"
-OUT_PATH.mkdir(exist_ok=True, parents=True)
+# OUT_PATH.mkdir(exist_ok=True, parents=True)
 OUT_PATH = OUT_PATH.absolute()
 
-
 PREFIX_NAME = "/static/media_files/"
-# OUT_PATH.mkdir(exist_ok=True, parents=True)
+
+
 @router.post(
     "/",
     summary="Загрузка изображений для твита",
@@ -41,7 +41,7 @@ async def post_image_handler(
 ) -> Union[MediaOutSchema, ErrorSchema]:
     """
     Эндпоинт загрузки изображений для твита
-
+    \f
     :param response: Response
          Обьект ответа на запрос
     :param file: UploadFile
@@ -65,8 +65,7 @@ async def post_image_handler(
 
         name_for_db = PREFIX_NAME + filename
 
-        result = await post_image(session=session, image_name=name_for_db)
-        return result
+        return await post_image(session=session, image_name=name_for_db)
     except BackendExeption as e:
         response.status_code = 400
         return e
